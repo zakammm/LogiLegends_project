@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Maliyyə Şirkət Sistemi</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-side {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 400px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .top-right-logo {
+            width: 100%;
+            height: auto;
+        }
+
+        .right-side:hover {
+            transform: scale(1.1);
+        }
+
+        .left-side {
+            position: absolute;
+            left: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 700px;
+            height: 1100px;
+            background: #111;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 400px;
+            text-align: center;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .rounded-input {
+            width: 100%;
+            padding: 14px 25px;
+            border-radius: 50px;
+            border: 1px solid #aaa;
+            background-color: #f5f5dc;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+            margin-top: 15px;
+        }
+
+        .rounded-input:focus {
+            border-color: #0077ff;
+            box-shadow: 0 0 5px rgba(0, 119, 255, 0.5);
+        }
+
+        .login-button {
+            width: 250px;
+            padding: 15px 0;
+            background: #6A5ACD;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 10px rgba(106, 90, 205, 0.8);
+        }
+
+        .login-button:hover {
+            background: #5a4bc0;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(106, 90, 205, 1);
+        }
+
+        #error-message {
+            color: red;
+            display: none;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="right-side">
+        <img src="Pictures/BANK-removebg-preview.png" alt="Logo" class="top-right-logo">
+    </div>
+
+    <div class="left-side">
+
+        <!-- Formun DÜZGÜN HALI (düymə burada olmalıdır!) -->
+        <form class="login-box" onsubmit="validateLogin(event)">
+            <input type="text" id="username" placeholder="Username" class="rounded-input">
+            <input type="password" id="password" placeholder="Password" class="rounded-input">
+
+            <button type="submit" class="login-button">Daxil Ol</button>
+        </form>
+
+        <div id="error-message">İstifadəçi adı və ya şifrə səhvdir!</div>
+
+    </div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Səhifənin yenilənməsinin qarşısını alır
+
+            var username = document.getElementById("username").value.trim();
+            var password = document.getElementById("password").value.trim();
+
+            if (username === "admin" && password === "1234") {
+                window.location.href = "main.html";  // DÜZGÜN yönləndirmə
+            } else {
+                document.getElementById("error-message").style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html> 
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Analitika</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+        }
+
+        /* HEADER — şəkilsiz */
+        .header {
+            background: #ffffff;
+            padding: 20px 50px;
+            box-shadow: 0 2px 25px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* LOGO ŞƏKİLİ SİLİNDİ */
+        .logo-area img {
+            display: none;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0d3c66;
+        }
+
+        .nav-menu a {
+            margin-left: 35px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d3c66;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #0d3c66;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.09);
+        }
+
+        .panel h2 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #374151;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        canvas {
+            height: 260px !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-text">Şirkət Paneli</div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="main.html">Əsas Səhifə</a>
+            <a href="operations.html">Əməliyyatlar</a>
+            <a href="anl.html">Analitika</a>
+            <a href="account.html">Profil</a>
+            <a href="savings.html">Qənaət</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="title">📊 Maliyyə Analitikası</div>
+
+        <div class="grid">
+
+            <div class="panel">
+                <h2>Aylıq Gəlir–Xərc Tendensiyası</h2>
+                <div class="desc">Son 6 ay üzrə gəlir və xərcin dəyişməsi.</div>
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <div class="panel">
+                <h2>Xərclərin Kateqoriyalar üzrə Paylanması</h2>
+                <div class="desc">Bu ay ən çox xərc edilən sahələr.</div>
+                <canvas id="doughnutChart"></canvas>
+            </div>
+
+            <div class="panel">
+                <h2>Aylıq Ümumi Əməliyyat Həcmi</h2>
+                <div class="desc">Aylar üzrə ümumi əməliyyat statistikası.</div>
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <div class="panel">
+                <h2>Mənfəət Analizi</h2>
+                <div class="desc">Təmiz mənfəətin aylara görə dəyişməsi.</div>
+                <canvas id="profitChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+/* LINE CHART */
+new Chart(document.getElementById("lineChart"), {
+    type: "line",
+    data: {
+        labels: ["May", "İyun", "İyul", "Avqust", "Sentyabr", "Oktyabr"],
+        datasets: [
+            {
+                label: "Gəlir",
+                data: [8000,7600,8200,9000,9400,9700],
+                borderColor: "#10b981",
+                borderWidth: 3,
+                tension: 0.3
+            },
+            {
+                label: "Xərc",
+                data: [4200,4500,4800,5100,5300,5500],
+                borderColor: "#ef4444",
+                borderWidth: 3,
+                tension: 0.3
+            }
+        ]
+    }
+});
+
+/* DOUGHNUT CHART */
+new Chart(document.getElementById("doughnutChart"), {
+    type: "doughnut",
+    data: {
+        labels: ["Market", "Nəqliyyat", "Əyləncə", "Restoran", "Hesablar"],
+        datasets: [{
+            data: [350,120,180,220,300],
+            backgroundColor: ["#3b82f6","#10b981","#f59e0b","#ef4444","#8b5cf6"]
+        }]
+    }
+});
+
+/* BAR CHART */
+new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+        labels: ["May","İyun","İyul","Avqust","Sentyabr","Oktyabr"],
+        datasets: [{
+            label: "Ümumi Hərəkət",
+            data: [12200,12100,13000,14100,14700,15200],
+            backgroundColor: "#3b82f6"
+        }]
+    }
+});
+
+/* PROFIT CHART */
+new Chart(document.getElementById("profitChart"), {
+    type: "line",
+    data: {
+        labels: ["May","İyun","İyul","Avqust","Sentyabr","Oktyabr"],
+        datasets: [{
+            label: "Mənfəət",
+            data: [3800,3100,3400,3900,4100,4200],
+            borderColor: "#8b5cf6",
+            borderWidth: 3,
+            tension: 0.25
+        }]
+    }
+});
+</script>
+
+</body>
+</html>

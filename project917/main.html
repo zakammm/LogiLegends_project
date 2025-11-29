@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Əsas Səhifə</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #f4f6f9;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* HEADER */
+        .header {
+            background: #ffffff;
+            padding: 20px 50px;
+            box-shadow: 0 2px 25px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0d3c66;
+        }
+
+        .nav-menu a {
+            margin-left: 35px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d3c66;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            padding: 40px 50px;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            gap: 25px;
+        }
+
+        .card {
+            width: 23%;
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        .card-title {
+            font-size: 15px;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .card-value {
+            margin-top: 8px;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0d3c66;
+        }
+
+        .green { color: #16a34a !important; }
+        .red   { color: #dc2626 !important; }
+
+        /* Chart */
+        .chart-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            margin-bottom: 35px;
+        }
+
+        .chart-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0d3c66;
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .y-labels {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 10px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .chart-area svg {
+            width: 1000px;
+            height: 230px;
+        }
+
+        .months {
+            margin-top: 8px;
+            display: flex;
+            font-size: 14px;
+            justify-content: space-between;
+            color: #6b7280;
+            width: 100%;
+        }
+
+        /* TABLE */
+        .table-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th {
+            text-align: left;
+            font-size: 17px;
+            padding-bottom: 10px;
+        }
+        td {
+            padding: 14px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-text">🏦 Şirkət Paneli</div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="main.html">Əsas Səhifə</a>
+            <a href="operations.html">Əməliyyatlar</a>
+            <a href="anl.html">Analitika</a>
+            <a href="account.html">Profil</a>
+            <a href="savings.html">Yığım</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card">
+                <div class="card-title">Bu gün gəlir</div>
+                <div class="card-value green">+1,240₼</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Bu gün xərc</div>
+                <div class="card-value red">-320₼</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Bu gün mənfəət</div>
+                <div class="card-value">+920₼</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Ümumi əməliyyat</div>
+                <div class="card-value">37</div>
+            </div>
+        </div>
+
+        <!-- CHART -->
+        <div class="chart-box">
+            <div class="chart-title">Günlük Gəlir</div>
+
+            <div class="chart-container">
+                <div class="y-labels">
+                    <span>80.000</span>
+                    <span>60.000</span>
+                    <span>40.000</span>
+                    <span>20.000</span>
+                    <span>0</span>
+                </div>
+
+                <div class="chart-area">
+                    <svg>
+                        <line x1="0" y1="35"  x2="900" y2="35"  stroke="#e5e7eb"/>
+                        <line x1="0" y1="80"  x2="900" y2="80"  stroke="#e5e7eb"/>
+                        <line x1="0" y1="125" x2="900" y2="125" stroke="#e5e7eb"/>
+                        <line x1="0" y1="170" x2="900" y2="170" stroke="#e5e7eb"/>
+                        <line x1="0" y1="215" x2="900" y2="215" stroke="#e5e7eb"/>
+
+                        <polyline 
+                            fill="none"
+                            stroke="#2563eb"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            points="
+                                20,200 
+                                130,170
+                                250,150
+                                370,110
+                                490,80
+                                610,120
+                                730,90
+                                850,140
+                            "
+                        />
+                    </svg>
+
+                    <div class="months">
+                        <span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span>
+                        <span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span>
+                        <span>20:00</span><span>21:00</span><span>22:00</span><span>23:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAST OPERATIONS -->
+        <div class="table-box">
+            <div class="chart-title">Son Əməliyyatlar</div>
+
+            <table>
+                <tr>
+                    <th>Əməliyyat</th>
+                    <th>Məbləğ</th>
+                    <th>Tarix</th>
+                </tr>
+
+                <tr>
+                    <td>Satış #2123</td>
+                    <td style="color: #16a34a; font-weight: 600;">+380₼</td>
+                    <td>30 noyabr</td>
+                </tr>
+
+                <tr>
+                    <td>Reklam xərci</td>
+                    <td style="color: #dc2626; font-weight: 600;">-80₼</td>
+                    <td>30 noyabr</td>
+                </tr>
+
+                <tr>
+                    <td>Satış #2122</td>
+                    <td style="color: #16a34a; font-weight: 600;">+290₼</td>
+                    <td>30 noyabr</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

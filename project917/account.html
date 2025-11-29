@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f5f7fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 20px 50px;
+            box-shadow: 0 2px 25px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0d3c51;
+        }
+
+        .nav-menu a {
+            margin-left: 35px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d3c51;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .profile-icon {
+            width: 150px;
+            height: 150px;
+            background: #e5e7eb;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0c2c51;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .profile-email {
+            text-align: center;
+            color: #6b7280;
+            font-size: 17px;
+            margin-top: 4px;
+        }
+
+        .section-title {
+            margin-top: 40px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0c2c51;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 20px;
+            box-shadow: 0 6px 35px rgba(0,0,0,0.07);
+            margin-top: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 17px;
+        }
+
+        .label {
+            color: #6b7280;
+        }
+
+        .value {
+            font-weight: 600;
+            color: #0c2c51;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 18px;
+            text-align: center;
+            background: #0c2c51;
+            color: white;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn.logout {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-text">Şirkət Paneli</div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="main.html">Əsas Səhifə</a>
+            <a href="operations.html">Əməliyyatlar</a>
+            <a href="anl.html">Analitika</a>
+            <a href="account.html" style="color:#2563eb;">Profil</a>
+            <a href="savings.html">Qənaət</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- PROFIL İKONU -->
+        <div class="profile-icon">
+            <svg width="90" height="90" viewBox="0 0 24 24" stroke="#0c2c51" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M6 20c0-3.5 3-6 6-6s6 2.5 6 6"></path>
+            </svg>
+        </div>
+
+        <!-- İSTİFADƏÇİ MƏLUMATI -->
+        <div class="profile-name">İstifadəçi Adı</div>
+        <div class="profile-email">mehdi@gmail.com</div>
+
+        <!-- HESAB MƏLUMATLARI -->
+        <div class="section-title">Hesab Məlumatları</div>
+        <div class="card">
+            <div class="info-row">
+                <div class="label">Hesab statusu:</div>
+                <div class="value">Aktiv</div>
+            </div>
+            <div class="info-row">
+                <div class="label">Qoşulma tarixi:</div>
+                <div class="value">12.05.2023</div>
+            </div>
+            <div class="info-row">
+                <div class="label">Ümumi əməliyyat:</div>
+                <div class="value">37 əməliyyat</div>
+            </div>
+        </div>
+
+        <!-- AYARLAR -->
+        <div class="section-title">Ayarlar</div>
+        <div class="card">
+            <div class="info-row">
+                <div class="label">Bildirişlər:</div>
+                <div class="value">Aktiv</div>
+            </div>
+            <div class="info-row">
+                <div class="label">Dil seçimi:</div>
+                <div class="value">Azərbaycan dili</div>
+            </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <a class="btn" href="#" id="editBtn" onclick="editProfile()">Məlumatları Redaktə et</a>
+        <a class="btn" href="#" id="saveBtn" style="display:none; background:#16a34a;" onclick="saveProfile()">Yadda saxla</a>
+
+        <a class="btn logout" href="#">Çıxış et</a>
+
+    </div>
+
+
+    <!-- REDAKTƏ FUNKSİYASI -->
+    <script>
+        let editing = false;
+
+        function editProfile() {
+            if (editing) return;
+            editing = true;
+
+            let name = document.querySelector(".profile-name");
+            let email = document.querySelector(".profile-email");
+
+            let nameTxt = name.innerText;
+            let emailTxt = email.innerText;
+
+            name.innerHTML = `<input id="editName" value="${nameTxt}" 
+                style="padding:10px 14px; font-size:22px; width:80%; border-radius:10px; border:1px solid #cbd5e1; text-align:center;">`;
+
+            email.innerHTML = `<input id="editEmail" value="${emailTxt}" 
+                style="padding:10px 14px; font-size:16px; width:70%; border-radius:10px; border:1px solid #cbd5e1; text-align:center;">`;
+
+            document.getElementById("editBtn").style.display = "none";
+            document.getElementById("saveBtn").style.display = "block";
+        }
+
+        function saveProfile() {
+            let newName = document.getElementById("editName").value;
+            let newEmail = document.getElementById("editEmail").value;
+
+            document.querySelector(".profile-name").innerText = newName;
+            document.querySelector(".profile-email").innerText = newEmail;
+
+            document.getElementById("editBtn").style.display = "block";
+            document.getElementById("saveBtn").style.display = "none";
+
+            editing = false;
+        }
+    </script>
+
+</body>
+</html>
