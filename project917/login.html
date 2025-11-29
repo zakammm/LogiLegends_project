@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="az">
 <head>
     <meta charset="UTF-8">
@@ -104,13 +104,41 @@
             font-size: 14px;
             margin-top: 10px;
         }
+        .top-right-logo {
+    width: 400px;   
+    height: 150px;  
+    object-fit: cover; 
+    border-radius: 10px; 
+    background-image: none;
+}
+.center-image-container {
+    position: absolute;
+    transform: translate(-1%, -50%);
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.center-image {
+    width: 400px;     
+    height: 300px;      
+    margin-left: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
     </style>
 </head>
 <body>
 
-    <div class="right-side">
-        <img src="Pictures/BANK-removebg-preview.png" alt="Logo" class="top-right-logo">
-    </div>
+    <div class="center-image-container">
+    <img src='C:\Users\Acer\Downloads\007851d5-f9bb-46f6-9ae9-b2dd4f5944ad.jpg'
+         class="center-image" 
+         alt="Logo">
+    <h4>AzerFinance Group</h4>
+</div>
 
     <div class="left-side">
 
@@ -139,6 +167,147 @@
             }
         }
     </script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Maliyyə Şirkət Sistemi</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Tam ortada şəkil + yazı */
+        .center-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 58%; /* login panel sol tərəfdə olduğu üçün 50 → 58 çəkdim */
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .center-image {
+            width: 500px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .company-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #111;
+            margin: 0;
+        }
+
+        /* Sol login panel */
+        .left-side {
+            position: absolute;
+            left: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 700px;
+            height: 1100px;
+            background: #111;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .login-box {
+            width: 350px;
+            text-align: center;
+            color: white;
+        }
+
+        .rounded-input {
+            width: 100%;
+            padding: 14px 25px;
+            border-radius: 50px;
+            border: 1px solid #aaa;
+            background-color: #f5f5dc;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .login-button {
+            width: 250px;
+            padding: 15px 0;
+            background: #6A5ACD;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            transform: scale(1.1);
+        }
+
+        #error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tam ortada şəkil + yazı -->
+    <div class="center-wrapper">
+        <img src="C:\Users\Acer\Downloads\007851d5-f9bb-46f6-9ae9-b2dd4f5944ad.jpg"
+             class="center-image"
+             alt="Logo">
+
+        <h4 class="company-title">AzerFinance Group</h4>
+    </div>
+
+    <!-- Sol hissə login -->
+    <div class="left-side">
+        <form class="login-box" onsubmit="validateLogin(event)">
+            <input type="text" id="username" placeholder="Username" class="rounded-input">
+            <input type="password" id="password" placeholder="Password" class="rounded-input">
+            <button type="submit" class="login-button">Daxil Ol</button>
+        </form>
+
+        <div id="error-message">İstifadəçi adı və ya şifrə səhvdir!</div>
+    </div>
+
+<script>
+function validateLogin(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value.trim();
+    var password = document.getElementById("password").value.trim();
+
+    if (username === "admin" && password === "1234") {
+        window.location.href = "main.html";
+    } else {
+        document.getElementById("error-message").style.display = "block";
+    }
+}
+</script>
 
 </body>
 </html>

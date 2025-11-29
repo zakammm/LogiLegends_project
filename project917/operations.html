@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <title>Əməliyyatlar</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: Tahoma, sans-serif;
-            background: #f3f4f6;
+            font-family: 'Arial', sans-serif;
+            background: #f4f6f9;
         }
 
+        /* HEADER */
         .header {
             background: #ffffff;
             padding: 20px 50px;
@@ -23,7 +21,11 @@
             align-items: center;
         }
 
-        .logo-area img { display: none; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
         .logo-text {
             font-size: 28px;
@@ -43,115 +45,245 @@
             color: #2563eb;
         }
 
-        .container {
-            max-width: 1150px;
-            margin: 30px auto;
-            padding: 20px;
+        /* CONTENT */
+        .content {
+            padding: 40px 50px;
         }
 
-        .title {
-            font-size: 28px;
+        .page-title {
+            font-size: 32px;
             font-weight: 800;
-            margin-bottom: 25px;
             color: #0d3c66;
+            margin-bottom: 30px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .panel {
-            background: white;
+        /* SEARCH BAR */
+        .search-bar {
+            background: #ffffff;
             padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.09);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
         }
 
-        .panel h2 {
-            margin: 0 0 12px 0;
-            font-size: 20px;
-            font-weight: 700;
-            color: #374151;
+        .search-input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            font-size: 16px;
         }
 
-        .desc {
+        /* OPERATIONS TABLE */
+        .table-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 17px;
+            padding-bottom: 12px;
             color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 12px;
         }
 
-        canvas {
-            height: 260px !important;
+        td {
+            padding: 14px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+        }
+
+        .green { color: #16a34a; font-weight: 600; }
+        .red   { color: #dc2626; font-weight: 600; }
+
+        /* ADD OPERATION */
+        .add-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0d3c66;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .submit-btn {
+            padding: 14px 22px;
+            background: #16a34a;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 
-<div class="header">
-    <div class="logo-area">
-        <div class="logo-text">Şirkət Paneli</div>
-    </div>
-
-    <div class="nav-menu">
-        <a href="main.html">Əsas Səhifə</a>
-        <a href="operations.html">Əməliyyatlar</a>
-        <a href="anl.html">Analitika</a>
-        <a href="account.html">Profil</a>
-        <a href="savings.html">Qənaət</a>
-    </div>
+    <!-- HEADER (tam eyni formadadır) -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-text">🏦AzerFinance Group
 </div>
-
-<div class="container">
-
-    <div class="title">📌 Əməliyyatlar Paneli</div>
-
-    <div class="grid">
-
-        <div class="panel">
-            <h2>Əməliyyatların Aylar üzrə Artımı</h2>
-            <div class="desc">Son aylarda baş vermiş ümumi əməliyyat dəyişimi.</div>
-            <canvas id="opsLine"></canvas>
         </div>
 
-        <div class="panel">
-            <h2>Əməliyyat Kateqoriyaları</h2>
-            <div class="desc">Əməliyyatların sahələr üzrə bölgüsü.</div>
-            <canvas id="opsPie"></canvas>
+        <div class="nav-menu">
+            <a href="main.html">Əsas Səhifə</a>
+            <a href="operations.html" style="color:#2563eb;">Əməliyyatlar</a>
+            <a href="anl.html">Analitika</a>
+            <a href="account.html">Profil</a>
+            <a href="savings.html">Yığım</a>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="page-title">Əməliyyatlar</div>
+
+        <!-- SEARCH -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Əməliyyat axtar...">
+        </div>
+
+        <!-- OPERATIONS TABLE -->
+        <div class="table-box">
+            <div class="section-title">Son Əməliyyatlar</div>
+
+            <table id="opsTable">
+                <tr>
+                    <th>Əməliyyat</th>
+                    <th>Məbləğ</th>
+                    <th>Tarix</th>
+                </tr>
+
+                <tbody id="opsBody">
+                    <tr>
+                        <td>Satış #3512</td>
+                        <td class="green">+460₼</td>
+                        <td>01.11.2025</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ofis xərci</td>
+                        <td class="red">-120₼</td>
+                        <td>17.11.2025</td>
+                    </tr>
+
+                    <tr>
+                        <td>Satış #3508</td>
+                        <td class="green">+380₼</td>
+                        <td>21.11.2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ADD OPERATION -->
+        <div class="add-box">
+            <div class="section-title">Əməliyyat əlavə et</div>
+
+            <div class="form-grid">
+                <input type="text" id="newName" placeholder="Əməliyyatın adı">
+                <input type="number" id="newAmount" placeholder="Məbləğ">
+                <select id="newType">
+                    <option selected disabled>Tip seç</option>
+                    <option value="income">Gəlir</option>
+                    <option value="expense">Xərc</option>
+                </select>
+                <input type="date" id="newDate">
+            </div>
+
+            <button class="submit-btn" onclick="addOperation()">Əlavə et</button>
         </div>
 
     </div>
 
-</div>
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function () {
+            let searchText = this.value.toLowerCase();
+            let rows = document.querySelectorAll("#opsBody tr");
 
-<script>
-new Chart(document.getElementById("opsLine"), {
-    type: "line",
-    data: {
-        labels: ["May","İyun","İyul","Avqust","Sentyabr","Oktyabr"],
-        datasets: [{
-            label:"Əməliyyat Sayı",
-            data:[340,360,390,420,450,470],
-            borderColor:"#2563eb",
-            borderWidth:3,
-            tension:0.3
-        }]
-    }
-});
+            rows.forEach(row => {
+                let t0 = row.cells[0].innerText.toLowerCase();
+                let t1 = row.cells[1].innerText.toLowerCase();
+                let t2 = row.cells[2].innerText.toLowerCase();
 
-new Chart(document.getElementById("opsPie"), {
-    type:"pie",
-    data:{
-        labels:["Ödəniş","Transfer","Nağd çıxarış","Nağd yatırma"],
-        datasets:[{
-            data:[280,160,90,120],
-            backgroundColor:["#2563eb","#10b981","#f59e0b","#ef4444"]
-        }]
-    }
-});
-</script>
+                row.style.display = (t0.includes(searchText) || t1.includes(searchText) || t2.includes(searchText))
+                    ? ""
+                    : "none";
+            });
+        });
+
+        function addOperation() {
+            let name = document.getElementById("newName").value.trim();
+            let amount = document.getElementById("newAmount").value;
+            let type = document.getElementById("newType").value;
+            let date = document.getElementById("newDate").value;
+
+            if (!name || !amount || !type || !date) {
+                alert("Bütün xanaları doldurun!");
+                return;
+            }
+
+            let amountFormatted =
+                type === "income"
+                ? `<td class='green'>+${amount}₼</td>`
+                : `<td class='red'>-${amount}₼</td>`;
+
+            let parts = date.split("-");
+            let formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
+
+            let newRow = `
+                <tr>
+                    <td>${name}</td>
+                    ${amountFormatted}
+                    <td>${formattedDate}</td>
+                </tr>
+            `;
+
+            document.getElementById("opsBody").insertAdjacentHTML("afterbegin", newRow);
+
+            document.getElementById("newName").value = "";
+            document.getElementById("newAmount").value = "";
+            document.getElementById("newType").value = "Tip seç";
+            document.getElementById("newDate").value = "";
+        }
+    </script>
 
 </body>
 </html>
