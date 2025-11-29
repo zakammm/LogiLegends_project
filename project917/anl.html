@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Analitika</title>
 
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -15,7 +14,6 @@
             background: #f3f4f6;
         }
 
-        /* HEADER — şəkilsiz */
         .header {
             background: #ffffff;
             padding: 20px 50px;
@@ -31,7 +29,6 @@
             gap: 12px;
         }
 
-        /* LOGO ŞƏKİLİ SİLİNDİ */
         .logo-area img {
             display: none;
         }
@@ -100,7 +97,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <div class="header">
         <div class="logo-area">
             <div class="logo-text">Şirkət Paneli</div>
@@ -150,7 +146,7 @@
     </div>
 
 <script>
-/* LINE CHART */
+
 new Chart(document.getElementById("lineChart"), {
     type: "line",
     data: {
@@ -174,7 +170,6 @@ new Chart(document.getElementById("lineChart"), {
     }
 });
 
-/* DOUGHNUT CHART */
 new Chart(document.getElementById("doughnutChart"), {
     type: "doughnut",
     data: {
@@ -186,7 +181,6 @@ new Chart(document.getElementById("doughnutChart"), {
     }
 });
 
-/* BAR CHART */
 new Chart(document.getElementById("barChart"), {
     type: "bar",
     data: {
@@ -199,7 +193,6 @@ new Chart(document.getElementById("barChart"), {
     }
 });
 
-/* PROFIT CHART */
 new Chart(document.getElementById("profitChart"), {
     type: "line",
     data: {
